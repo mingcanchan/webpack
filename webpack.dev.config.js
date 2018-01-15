@@ -12,7 +12,10 @@ module.exports = {
 		{
             test: /(\.jsx|\.js)$/,
             use: {
-                loader: "babel-loader"
+                loader: "babel-loader",
+				options: {
+					presets: ['lated']
+				}
             },
             exclude: __dirname+'node_modules',
 			include: __dirname+'src'
