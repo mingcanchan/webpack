@@ -1,8 +1,11 @@
 import './css/common.css';
-import layer from './components/layer/layer.js';
+import Layer from './components/layer/layer.js';
 const App = function(){
-	const num = 1;
-	alert(num);
-	console.log(layer);
+	const layer = new Layer();
+	const dom = document.getElementById("app");
+	dom.innerHTML=layer.tpl({
+		name: 'demo',
+		arr: ['xiaomi','apple','huawei']
+	});
 }
 new App()

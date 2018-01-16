@@ -22,17 +22,46 @@ module.exports = {
 			
         },
 		{
-			test: /\.css/,
-			use: [{
-				loader:'style-loader'
-			},{
-				loader:'css-loader'
-			},{ 
-				loader: 'postcss-loader',options: {
-					plugins: function () {return [require('autoprefixer')];}
+			test: /\.css$/,
+			use: [
+				'style-loader',
+				'css-loader',		
+				{
+					loader:'postcss-loader',options:{ plugins:[ require('postcss-import')(),require('autoprefixer')()]}
 				}
-			}]
-		}
+			]
+		},
+		{
+			test: /\.tpl$/,
+			use: [
+				'ejs-loader'
+			]
+			
+		},
+		{
+			test: /\.html$/,
+			use:[
+				'html-loader'
+			]
+		},
+		
+		{
+              test:/\.less$/,
+              use:[
+                  'style-loader',
+                  'css-loader',
+                  {
+					loader:'postcss-loader',options:{ plugins:[ require('postcss-import')(),require('autoprefixer')()]}
+				  },
+                  'less-loader'
+              ]
+        },
+		{
+			test: /\.(png|jpg|gif|svg)$/i,
+			use:[
+				'file-loader'
+			]
+		},
 	]
   },
 	
